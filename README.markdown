@@ -20,22 +20,22 @@ In the spirit of DRY, what btw *will not* do.
 
 Release versions
 
-# nothing yet
+* initial shell running locally
 
 Development path
 
-# get shell running on localhost [done]
-# establish git repo
-# get running on remote host
-# render a directory listing using code directory as pub_root
-# browse to underlying directory
-# browse to parent (if not root)
-# implement separate pub_root from environment
-## .htaccess on remote pub_root
-## svn syncing local and remote file tree
-# render .textile files with redcloth (or SuperRedCloth!!)
-# add 'edit me' link
-# test opening pdfs, jpgs, gifs, pngs, htm in browser
-# migrate legacy content into file tree
+* get shell running on localhost [done]
+* establish git repo
+* get running on remote host
+* render a directory listing using code directory as pub_root
+* browse to underlying directory
+* browse to parent (if not root)
+* implement separate pub_root from environment
+** .htaccess on remote pub_root
+** svn syncing local and remote file tree
+* render .textile files with redcloth (or SuperRedCloth!!)
+* add 'edit me' link
+* test opening pdfs, jpgs, gifs, pngs, htm in browser
+* migrate legacy content into file tree
 
 
