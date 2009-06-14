@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 ## btw = bare text wiki
 
+require 'rubygems'
 require 'camping'     # ruby for fcgi: http://camping.rubyforge.org/
 
 #PUB_ROOT ||= "" # root node of wiki file tree, define in dispatch.fcgi
