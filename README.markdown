@@ -20,13 +20,12 @@ In the spirit of DRY, what btw *will not* do.
 
 Release versions
 
-* initial shell running locally
+* get shell running on localhost [done]
+* establish git repo [done]
+* get running on remote host [done]
 
 Development path
 
-* get shell running on localhost [done]
-* establish git repo
-* get running on remote host
 * render a directory listing using code directory as pub_root
 * browse to underlying directory
 * browse to parent (if not root)
