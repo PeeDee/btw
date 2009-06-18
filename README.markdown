@@ -3,6 +3,9 @@ Bare Text Wiki (btw)
 
 Camping to implement a wiki over any standard file tree.
 
+Docs are sort of scattered around, at "RubyForge":http://camping.rubyforge.org/files/README.html
+and "GitHub":http://wiki.github.com/why/camping
+
 Basically I want to store and edit a great deal of unstructured information in as painless and open a way as possible, which means text. And I want links, and code formatting, and very limited styles; so textile is perfect. 90% of the time I am not editing but viewing, and Safari won't display textile for me without something rendering the html for it. If Safari (or Finder's "Quick Look") displayed markdown or textile I wouldn't need to write btw. In-browser editing is painful, so I want to edit outside the browser but have an appropriate edit link embedded in every document and have the browser immediately pick up the edits on a refresh. 
 
 The idea is to browse a directory tree, displaying any documents in formats handled by my browser (eg. pdf, htm, html, jpg, png...), pre-formatting to html any light-weight text markup formats (initially textile; one day markdown, rdoc...). It would be nice to do something pretty with ruby code as well.
