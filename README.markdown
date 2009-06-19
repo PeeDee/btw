@@ -9,7 +9,7 @@ Basically I want to store and edit a great deal of unstructured information in a
 
 The idea is to browse a directory tree, displaying any documents in formats handled by my browser (eg. pdf, htm, html, jpg, png...), pre-formatting to html any light-weight text markup formats (initially textile; one day markdown, rdoc...). It would be nice to do something pretty with ruby code as well.
 
-I'm using camping, because once you get it running it works pretty well serving dynamic pages from ruby code. On a shared host (Dreamhost) I am only having any luck with .cgi.
+Now I've switched from camping to sinatra. Wow! It runs so well, and there aren't all the problems with munging the url's passed in. Still have to get it running in shared hosting mode though.
 
 I would like to have the app run locally as well as synced to a remote tree and app.
 
@@ -24,13 +24,21 @@ h2 Pseudocode
 ***     if a type we format, send to_html content to browser within layout
 ***       if BTW_LOCAL defined, send system call to open WIKI_ROOT + path
 
-h2 Installation
-* for remote use, in dispatch.cgi:
-** export RACK_ENV='remote'
-** export WIKI_ROOT='/absolute/path/to/wiki'
-* for local use, in .profile
+h2 Installation, Configuration and Running
+
+h3 local use
+* copy file to local directory
+* in .profile (or from command line)
 ** export RACK_ENV='local'
 ** export WIKI_ROOT='/absolute/path/to/wiki'
+* @ruby btw.rb@
+
+h3 remote use
+* copy file to server
+* in dispatch.cgi:
+** export RACK_ENV='remote'
+** export WIKI_ROOT='/absolute/path/to/wiki'
+* ... to be continued ...
 
 In the spirit of DRY, what btw *will not* do.
 
@@ -47,18 +55,18 @@ Release versions
 * establish git repo [done]
 * get running on remote host [done]
 * render a directory listing of wiki_root [done]
+* browse to underlying directory
+* browse to parent (if not root)
+* implement separate WIKI_ROOT set in environment
 
 Development path
 
-* browse to underlying directory
-* browse to parent (if not root)
-* implement separate pub_root from environment
-** .htaccess on remote pub_root
-** svn syncing local and remote file tree
+* pass through pdfs, jpgs, gifs, pngs, htm, html to browser (in frame?)
 * render .textile files with redcloth (or SuperRedCloth!!)
-* add 'edit me' link
-* test opening pdfs, jpgs, gifs, pngs, htm in browser
-* migrate legacy content into file tree
+* add 'edit me' link for text and textile files
+* migrate my legacy content into the local file tree
+** .htaccess on remote pub_root (or Rack authentication??)
+** svn syncing local and remote file tree
 * pretty up with css
 
 
