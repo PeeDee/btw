@@ -1,44 +1,12 @@
-h1 Bare Text Wiki (btw)
+h1. Bare Text Wiki (btw)
 
-Camping to implement a wiki over any standard file tree.
+Sinatra app to implement a wiki over any standard file tree, in particular that on my OSX machine(s). There are other good examples of this, "korma":http://github.com/sandal/korma which generates a static site from a git repository and "git-wiki":http://github.com/sr/git-wiki which drives a live wiki from a git repository... But I want to completely separate the serving of pages on the fly from the means of storage and maintenance.
 
-Docs are sort of scattered around, at "RubyForge":http://camping.rubyforge.org/files/README.html
-and "GitHub":http://wiki.github.com/why/camping
+Basically I want to store and edit a great deal of unstructured information in as painless and open a way as possible, which means text. And I want links, and code formatting, and very limited styles; so "textile":http://hobix.com/textile/quick.html is perfect. 90% of the time I am not editing but viewing, and Safari won't display textile for me without something rendering the html for it. If Safari (or Finder's "Quick Look") displayed markdown or textile I wouldn't need to write btw. In-browser editing is painful, so I want to edit outside the browser but have an appropriate edit link embedded in every document and have the browser immediately pick up the edits on a refresh. 
 
-Basically I want to store and edit a great deal of unstructured information in as painless and open a way as possible, which means text. And I want links, and code formatting, and very limited styles; so textile is perfect. 90% of the time I am not editing but viewing, and Safari won't display textile for me without something rendering the html for it. If Safari (or Finder's "Quick Look") displayed markdown or textile I wouldn't need to write btw. In-browser editing is painful, so I want to edit outside the browser but have an appropriate edit link embedded in every document and have the browser immediately pick up the edits on a refresh. 
-
-The idea is to browse a directory tree, displaying any documents in formats handled by my browser (eg. pdf, htm, html, jpg, png...), pre-formatting to html any light-weight text markup formats (initially textile; one day markdown, rdoc...). It would be nice to do something pretty with ruby code as well.
-
-Now I've switched from camping to sinatra. Wow! It runs so well, and there aren't all the problems with munging the url's passed in. Still have to get it running in shared hosting mode though.
+The idea is to browse a local or remote directory tree, displaying any documents in formats handled by my browser (eg. pdf, htm, html, jpg, png...), pre-formatting to html any light-weight text markup formats (initially textile; one day markdown, rdoc...). It would be nice to do something pretty with ruby code as well.
 
 I would like to have the app run locally as well as synced to a remote tree and app.
-
-h2 Pseudocode
-* anything following hostname is taken to be a path from PUB_ROOT
-**   if a directory, display a file list
-***     linking to respective path from PUB_ROOT
-***     directories first
-***     filtering out junk files
-**   if a file
-***     if a browser type, send hostname+path link to browser
-***     if a type we format, send to_html content to browser within layout
-***       if BTW_LOCAL defined, send system call to open WIKI_ROOT + path
-
-h2 Installation, Configuration and Running
-
-h3 local use
-* copy file to local directory
-* in .profile (or from command line)
-** export RACK_ENV='local'
-** export WIKI_ROOT='/absolute/path/to/wiki'
-* @ruby btw.rb@
-
-h3 remote use
-* copy file to server
-* in dispatch.cgi:
-** export RACK_ENV='remote'
-** export WIKI_ROOT='/absolute/path/to/wiki'
-* ... to be continued ...
 
 In the spirit of DRY, what btw *will not* do.
 
@@ -49,7 +17,34 @@ In the spirit of DRY, what btw *will not* do.
 * control access (.htaccess online, file permissions locally)
 * search (Spotlight locally, Google online)
 
-Release versions
+h2. Pseudocode
+* anything following hostname is taken to be a path from PUB_ROOT
+**   if a directory, display a file list
+***     linking to respective path from PUB_ROOT
+***     directories first
+***     filtering out junk files
+**   if a file
+***     if a "browser type", send hostname+path link to browser
+***     if a type we format, send to_html content to browser within layout
+***       if BTW_LOCAL defined, send system call to open WIKI_ROOT + path
+
+h2. Installation, Configuration and Running
+
+h3. local use
+* copy file to local directory
+* in .profile (or from command line)
+** export RACK_ENV='local'
+** export WIKI_ROOT='/absolute/path/to/wiki'
+* @ruby btw.rb@
+
+h3. remote use
+* copy file to server
+* in dispatch.cgi:
+** export RACK_ENV='remote'
+** export WIKI_ROOT='/absolute/path/to/wiki'
+* ... to be continued ...
+
+h2. Release versions
 
 * get shell running on localhost [done]
 * establish git repo [done]
@@ -59,7 +54,7 @@ Release versions
 * browse to parent (if not root)
 * implement separate WIKI_ROOT set in environment
 
-Development path
+h2. Development path
 
 * pass through pdfs, jpgs, gifs, pngs, htm, html to browser (in frame?)
 * render .textile files with redcloth (or SuperRedCloth!!)
