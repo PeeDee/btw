@@ -1,5 +1,4 @@
-Bare Text Wiki (btw)
-====================
+h1 Bare Text Wiki (btw)
 
 Camping to implement a wiki over any standard file tree.
 
@@ -13,6 +12,25 @@ The idea is to browse a directory tree, displaying any documents in formats hand
 I'm using camping, because once you get it running it works pretty well serving dynamic pages from ruby code. On a shared host (Dreamhost) I am only having any luck with .cgi.
 
 I would like to have the app run locally as well as synced to a remote tree and app.
+
+h2 Pseudocode
+* anything following hostname is taken to be a path from PUB_ROOT
+**   if a directory, display a file list
+***     linking to respective path from PUB_ROOT
+***     directories first
+***     filtering out junk files
+**   if a file
+***     if a browser type, send hostname+path link to browser
+***     if a type we format, send to_html content to browser within layout
+***       if BTW_LOCAL defined, send system call to open WIKI_ROOT + path
+
+h2 Installation
+* for remote use, in dispatch.cgi:
+** export RACK_ENV='remote'
+** export WIKI_ROOT='/absolute/path/to/wiki'
+* for local use, in .profile
+** export RACK_ENV='local'
+** export WIKI_ROOT='/absolute/path/to/wiki'
 
 In the spirit of DRY, what btw *will not* do.
 
